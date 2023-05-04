@@ -37,7 +37,7 @@ router.delete("/:id", async (req, res) => {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    await taskToDelete.delete;
+    await taskToDelete.deleteOne();
     res.json({ message: "Task deleted successfully" });
   } catch (error) {
     console.error(error);
