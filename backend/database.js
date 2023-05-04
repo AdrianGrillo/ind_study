@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-const connectionString =
-  "mongodb+srv://Admin:Admin@ind-study.etdikm2.mongodb.net/?retryWrites=true&w=majority";
+const uri =
+  "mongodb+srv://adrian:adrian@ind-study.etdikm2.mongodb.net/?retryWrites=true&w=majority";
 
-mongoose.connect(connectionString, {
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

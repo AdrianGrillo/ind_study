@@ -1,12 +1,10 @@
 const express = require("express");
-const { Task } = require("./database"); // assuming your database file is named database.js
+const { Task } = require("../database");
 
-const app = express();
-
-app.use(express.json());
+const router = express.Router();
 
 // Get all tasks
-app.get("/api/tasks", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const tasks = await Task.find();
     res.json(tasks);
@@ -17,7 +15,7 @@ app.get("/api/tasks", async (req, res) => {
 });
 
 // Add a task
-app.post("/api/tasks", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const { title, description, dueDate } = req.body;
     const newTask = new Task({ title, description, dueDate });
@@ -30,7 +28,7 @@ app.post("/api/tasks", async (req, res) => {
 });
 
 // Delete a task
-app.delete("/api/tasks/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const taskId = req.params.id;
     const taskToDelete = await Task.findById(taskId);
@@ -39,7 +37,7 @@ app.delete("/api/tasks/:id", async (req, res) => {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    await taskToDelete.remove();
+    await taskToDelete.delete;
     res.json({ message: "Task deleted successfully" });
   } catch (error) {
     console.error(error);
@@ -47,4 +45,4 @@ app.delete("/api/tasks/:id", async (req, res) => {
   }
 });
 
-module.exports = app;
+module.exports = router;
