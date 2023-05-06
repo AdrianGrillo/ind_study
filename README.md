@@ -1,4 +1,4 @@
-# How to start build the project
+# How to start the project
 
 ## Install docker
 
